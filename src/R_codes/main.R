@@ -23,7 +23,7 @@ main <- function() {
   # regression on the training set 
   train <- load_data("train.csv")
   training_output <- cleaned(train)
-  cat("Data cleaning: Drop NA values and add 'IsAlone' = 1 if no family aboard\n")
+  cat("Data cleaning: Drop NA values and add a variable 'IsAlone' = 1 if no family aboard\n")
 
   features <- c("Sex", "Age", "Fare", "IsAlone")
   cat(sprintf("Selected features: %s\n", paste(features, collapse = ", ")))
@@ -47,9 +47,14 @@ main <- function() {
   pred_test <- ifelse(prob_test > 0.5, 1, 0)
   output <- data.frame(PassengerId = test_output$PassengerId, Prediction = pred_test)
 
-  save_path <- file.path("output/predictions_part4.csv")
-  write.csv(output, save_path, row.names = FALSE)
-  cat(sprintf("Saved predictions to '%s'\n", save_path))
+  output_dir <- "output"
+  if (!dir.exists(output_dir)) {
+    dir.create(output_dir, recursive = TRUE)
+  }
+
+  output_path <- file.path(output_dir, "predictions_part4.csv")
+  write.csv(output, output_path, row.names = FALSE)
+  cat(sprintf("Saved predictions to 'output/predictions_part4.csv'"))
 }
 
 if (sys.nframe() == 0) main()

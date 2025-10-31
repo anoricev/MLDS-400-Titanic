@@ -5,6 +5,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PIP_NO_CACHE_DIR=1
 
 WORKDIR /app
+RUN mkdir -p /app/output
 
 COPY requirements.txt /app/requirements.txt
 RUN python -m pip install --upgrade pip && \

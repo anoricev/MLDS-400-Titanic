@@ -43,8 +43,9 @@ def main():
     x_test = test_output[features]
     x_test = pd.get_dummies(x_test, columns=["Sex"], drop_first=True)
     output = pd.DataFrame({"Passenger ID": test_output["PassengerId"], "Prediction": model.predict(x_test)})
+    os.makedirs("output", exist_ok=True)
     output.to_csv("output/predictions_part3.csv", index=False)
-    print(f"Saved predictions to 'predictions_part3.csv'")
+    print(f"Saved predictions to 'output/predictions_part3.csv'")
 
 if __name__ == "__main__":
     main()
