@@ -34,14 +34,14 @@ MLDS-400-Titanic/
 
 ```bash
 git clone https://github.com/anoricev/MLDS-400-Titanic.git
-cd DataEng_Titanic
+cd MLDS-400-Titanic
 ```
 
 ### Use SSH
 
 ```bash
 git clone git@github.com:anoricev/MLDS-400-Titanic.git
-cd DataEng_Titanic
+cd MLDS-400-Titanic
 ```
 
 ## Get the Data
